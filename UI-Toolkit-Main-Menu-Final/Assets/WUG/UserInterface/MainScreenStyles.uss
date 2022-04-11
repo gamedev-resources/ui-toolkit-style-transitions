@@ -18,6 +18,10 @@
 #Menu {
     width: 28%;
     flex-direction: row;
+    transition-property: width;
+    transition-duration: 1s;
+    transition-timing-function: ease;
+    transition-delay: 0.1s;
 }
 
 #Option {
@@ -28,13 +32,13 @@
     color: white;
 }
 
-/*.mode-settings #SettingsContent {
+modesettings #SettingsContent {
     display: flex;
 }
 
 .mode-settings #MenuContent {
     display: none;
-}*/
+}
 
 #MenuContent {
     flex-grow: 1;
@@ -62,9 +66,9 @@
     font-size: var(--font-size-h3);
 }
 
-/*#SettingsContent > #Option:hover {
+#SettingsContent > #Option:hover {
     font-size: var(--font-size-h2);
-}*/
+}
 
 #SettingsContent > #Header {
     font-size: var(--font-size-h1);
@@ -77,13 +81,10 @@
     background-color: var(--color-1);
 }
 
-/*.menu-expanded {
-    scale: 1 1;
-}
-
 .menu-collapsed {
+    width: 0;
     scale: 0 1;
-}*/
+}
 
 #DecorativeBar {
     width: 5px;
