@@ -1,6 +1,7 @@
 :root {
     --color-1: rgba(0, 0, 0, 0.75);
     --color-2: rgb(108, 160, 195);
+    --color-2-transparent: rgba(108, 160, 195, 0);
     --font-size-h1: 35px;
     --font-size-h2: 30px;
     --font-size-h3: 25px;
@@ -19,7 +20,7 @@
     width: 28%;
     flex-direction: row;
     transition-property: width;
-    transition-duration: 1s;
+    transition-duration: 0.35s;
     transition-timing-function: ease;
     transition-delay: 0.1s;
 }
@@ -32,45 +33,34 @@
     color: white;
 }
 
-modesettings #SettingsContent {
-    display: flex;
-}
-
-.mode-settings #MenuContent {
+#SettingsNav {
     display: none;
 }
 
-#MenuContent {
+.menu-settings #SettingsNav {
+    display: flex;
+}
+
+.mode-settings #MainNav {
+}
+
+#Navigation {
     flex-grow: 1;
     align-items: center;
     justify-content: center;
     display: flex;
 }
 
-#MenuContent > #Option {
+#Navigation #Option {
     font-size: var(--font-size-h2);
+    -unity-text-align: upper-center;
 }
 
-#MenuContent > #Option:hover {
+#Navigation #Option:hover {
     font-size: var(--font-size-h1);
 }
 
-#SettingsContent {
-    flex-grow: 1;
-    align-items: center;
-    justify-content: center;
-    display: none;
-}
-
-#SettingsContent > #Option {
-    font-size: var(--font-size-h3);
-}
-
-#SettingsContent > #Option:hover {
-    font-size: var(--font-size-h2);
-}
-
-#SettingsContent > #Header {
+#Navigation #Header {
     font-size: var(--font-size-h1);
     border-bottom-width: 1.5px;
     border-color: var(--color-2);
@@ -81,9 +71,18 @@ modesettings #SettingsContent {
     background-color: var(--color-1);
 }
 
-.menu-collapsed {
-    width: 0;
-    scale: 0 1;
+.menu-settings #MainNav {
+    transition-duration: 0.35s, 0s;
+    transition-timing-function: ease, ease;
+    translate: 0 -474px;
+    transition-property: all, display;
+    transition-delay: 0s, 0.35s;
+    display: none;
+}
+
+.menu-settings #SettingsNav {
+    transition-duration: 0.35s;
+    transition-timing-function: ease;
 }
 
 #DecorativeBar {

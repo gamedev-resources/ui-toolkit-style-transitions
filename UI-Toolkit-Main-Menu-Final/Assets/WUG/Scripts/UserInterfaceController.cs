@@ -9,14 +9,15 @@ public class UserInterfaceController : MonoBehaviour
 {
     private enum MenuState
     {
-        Collapsed,
-        Expanded
+        Settings
     }
 
     private MenuState _currentMenuState;
 
     private VisualElement _root;
     private VisualElement _menu;
+    private VisualElement _mainMenuOptions;
+    private VisualElement _settingsMenuOptions;
 
     private bool expanded = true;
     private VisualElement _settingsButton;
@@ -24,36 +25,19 @@ public class UserInterfaceController : MonoBehaviour
 
     private bool _navTransitionActive;
 
-    private const string EXPANDED = "menu-expanded";
-    private const string COLLAPSED = "menu-collapsed";
+    private const string SETTINGS_STYLE = "menu-settings";
 
     private void Start()
     {
         _root = GetComponent<UIDocument>().rootVisualElement;
         _menu = _root.Q<VisualElement>("Menu");
 
-        var mainOptions = _menu.Q<VisualElement>("MenuContent").Children().ToList();
+        _mainMenuOptions = _menu.Q<VisualElement>("MenuContent");
+        _settingsMenuOptions = _menu.Q<VisualElement>("SettingsContent");
 
-        _settingsButton = mainOptions[mainOptions.Count - 2];
-        _cancelButton = _menu.Q<VisualElement>("SettingsContent").Children().Last();
+        _settingsButton = _mainMenuOptions.Children().Cast<Label>().FirstOrDefault(x => x.text.ToUpper().Equals("SETTINGS"));
+        _cancelButton = _settingsMenuOptions.Children().Last();
 
-        _menu.RegisterCallback<TransitionEndEvent>((evt) => 
-        {
-            Debug.Log("Transition End Fired");
-            if (_currentMenuState == MenuState.Collapsed)
-            {
-               _menu.EnableInClassList(COLLAPSED, false);
-
-                _currentMenuState = MenuState.Expanded;
-            }
-            else
-            {
-                _navTransitionActive = false;
-            }
-
-        });
-        
-        
         _settingsButton.RegisterCallback<MouseDownEvent>((evt) => 
         {
             //Cannot interact with the settings button during a transition
@@ -64,10 +48,7 @@ public class UserInterfaceController : MonoBehaviour
 
             Debug.Log("Settings Clicked");
 
-            _currentMenuState = MenuState.Collapsed;
-            _navTransitionActive = true;
-
-            _menu.EnableInClassList(COLLAPSED, true);
+            _menu.EnableInClassList(SETTINGS_STYLE, true);
         });
 
         _cancelButton.RegisterCallback<MouseDownEvent>((evt) =>
@@ -80,10 +61,7 @@ public class UserInterfaceController : MonoBehaviour
 
             Debug.Log("Settings Clicked");
 
-            _currentMenuState = MenuState.Collapsed;
-            _navTransitionActive = true;
-
-            _menu.EnableInClassList(COLLAPSED, true);
+            _menu.EnableInClassList(SETTINGS_STYLE, false);
         });
     }
 
