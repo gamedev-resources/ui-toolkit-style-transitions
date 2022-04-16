@@ -13,6 +13,8 @@ public class UserInterfaceController : MonoBehaviour
         Settings
     }
 
+    private MenuState _targetMenuState = MenuState.Main;
+
     private MenuState _currentMenuState;
 
     private VisualElement _root;
@@ -24,12 +26,13 @@ public class UserInterfaceController : MonoBehaviour
     private VisualElement _settingsButton;
     private VisualElement _cancelButton;
 
-    private bool _navTransitionActive;
-
     private const string POPUP_ANIMATION = "pop-animation-hide";
-    private int _mainPopupIndex = 0;
+    private int _mainPopupIndex = -1;
 
-    private void Start()
+    public bool _navTransitionActive;
+    public bool _firstLoadDone = false;
+
+    private void Awake()
     {
         _root = GetComponent<UIDocument>().rootVisualElement;
         _menu = _root.Q<VisualElement>("Menu");
@@ -40,26 +43,34 @@ public class UserInterfaceController : MonoBehaviour
         _settingsButton = _mainMenuOptions.Children().Cast<Label>().FirstOrDefault(x => x.text.ToUpper().Equals("SETTINGS"));
         _cancelButton = _settingsMenuOptions.Children().Last();
 
+        var children = _mainMenuOptions.Children().ToList();
 
-        foreach (var child in _mainMenuOptions.Children().ToList())
-        {
-            child.RegisterCallback<TransitionEndEvent>((evt) => {
+        _menu.RegisterCallback<TransitionEndEvent>((evt) => {
 
-                Debug.Log($"Opacity finished on {evt.target}: {evt.stylePropertyNames.Contains("opacity")} ");
+            _firstLoadDone = _mainPopupIndex == _mainMenuOptions.childCount - 1;
 
-                if (!evt.stylePropertyNames.Contains("opacity") || _mainPopupIndex == _mainMenuOptions.childCount - 1) { return; }
+            if (!evt.stylePropertyNames.Contains("opacity")) { return; }
 
+            if (!_firstLoadDone)
+            {
                 _mainPopupIndex++;
 
                 _mainMenuOptions[_mainPopupIndex].ToggleInClassList(POPUP_ANIMATION);
 
-            });
+            }
+            else if (_navTransitionActive)
+            {
+                _mainMenuOptions.style.display = _settingsMenuOptions.style.display == DisplayStyle.Flex ? DisplayStyle.Flex : DisplayStyle.None;
+                _settingsMenuOptions.style.display = _settingsMenuOptions.style.display == DisplayStyle.Flex ? DisplayStyle.None : DisplayStyle.Flex;
 
-        }
+                _navTransitionActive = false;
 
-        _mainMenuOptions.Children().ToList()[_mainPopupIndex].ToggleInClassList(POPUP_ANIMATION);
+                _menu.ToggleInClassList(POPUP_ANIMATION);
+            }
+        });
 
-        _settingsButton.RegisterCallback<MouseDownEvent>((evt) => 
+
+        _settingsButton.RegisterCallback<MouseDownEvent>((evt) =>
         {
             //Cannot interact with the settings button during a transition
             if (_navTransitionActive)
@@ -67,9 +78,10 @@ public class UserInterfaceController : MonoBehaviour
                 return;
             }
 
-            Debug.Log("Settings Clicked");
+            _navTransitionActive = true;
 
-            //_menu.EnableInClassList(SETTINGS_STYLE, true);
+            _menu.ToggleInClassList(POPUP_ANIMATION);
+
         });
 
         _cancelButton.RegisterCallback<MouseDownEvent>((evt) =>
@@ -80,10 +92,18 @@ public class UserInterfaceController : MonoBehaviour
                 return;
             }
 
-            Debug.Log("Settings Clicked");
+            _navTransitionActive = true;
 
-            //_menu.EnableInClassList(SETTINGS_STYLE, false);
+            _menu.ToggleInClassList(POPUP_ANIMATION);
+
         });
+    }
+
+    private IEnumerator Start()
+    {
+        yield return new WaitForSeconds(2f);
+
+        _menu.ToggleInClassList(POPUP_ANIMATION);
     }
 
 
