@@ -4,11 +4,11 @@
         <ui:VisualElement name="Menu" style="transform-origin: left; transition-property: all;">
             <ui:VisualElement name="Navigation" class="mode-settings" style="flex-grow: 1;">
                 <ui:VisualElement name="MainNav">
-                    <ui:Label text="CONTINUE" display-tooltip-when-elided="true" name="Option" />
-                    <ui:Label text="NEW GAME" display-tooltip-when-elided="true" name="Option" style="white-space: normal;" />
-                    <ui:Label text="MULTIPLAYER" display-tooltip-when-elided="true" name="Option" />
-                    <ui:Label text="SETTINGS" display-tooltip-when-elided="true" name="Option" />
-                    <ui:Label text="QUIT" display-tooltip-when-elided="true" name="Option" />
+                    <ui:Label text="CONTINUE" display-tooltip-when-elided="true" name="Option" class="pop-animation-hide" />
+                    <ui:Label text="NEW GAME" display-tooltip-when-elided="true" name="Option" class="pop-animation-hide" style="white-space: normal;" />
+                    <ui:Label text="MULTIPLAYER" display-tooltip-when-elided="true" name="Option" class="pop-animation-hide" />
+                    <ui:Label text="SETTINGS" display-tooltip-when-elided="true" name="Option" class="pop-animation-hide" />
+                    <ui:Label text="QUIT" display-tooltip-when-elided="true" name="Option" class="pop-animation-hide" />
                 </ui:VisualElement>
                 <ui:VisualElement name="SettingsNav">
                     <ui:Label text="SETTINGS" display-tooltip-when-elided="true" name="Header" />
