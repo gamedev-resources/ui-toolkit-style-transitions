@@ -5,6 +5,8 @@ Including animations in your user interface can take it to the next level and re
 
 > This tutorial is the second part of a 2-part series. Part 1, [Design an interactive game UI with Figma](https://gamedev-resources.com/design-a-game-ui-with-figma/), covers the basics of using the free tier of Figma to rapidly prototype a new main menu design. You can skip the first tutorial if you do not want to learn about Figma.
 
+![Example](https://gamedev-resources.com/wp-content/uploads/2022/04/FinalAnim.gif)
+
 # Learning Outcomes
 * Import and use custom fonts
 * Define and use stylesheet variables
