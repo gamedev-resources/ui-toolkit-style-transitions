@@ -8,21 +8,24 @@ using System;
 public class UserInterfaceController : MonoBehaviour
 {
     private VisualElement _menu;
-    private List<VisualElement> _mainMenuOptions;
-    private VisualElement _settingsMenuOptions;
+    private VisualElement[] _mainMenuOptions;
+    //private VisualElement _settingsMenuOptions;
+    private List<VisualElement> _widgets;
 
     private const string POPUP_ANIMATION = "pop-animation-hide";
     private int _mainPopupIndex = -1;
 
-    public bool _navTransitionActive;
-    public bool _firstLoadDone = false;
+    // public bool _navTransitionActive;
+    //  public bool _firstLoadDone = false;
 
     private void Awake()
     {
-        _menu = GetComponent<UIDocument>().rootVisualElement.Q<VisualElement>("Menu");
+        var root = GetComponent<UIDocument>().rootVisualElement;
+        _menu = root.Q<VisualElement>("Menu");
 
-        _mainMenuOptions = _menu.Q<VisualElement>("MainNav").Children().ToList();
-        _settingsMenuOptions = _menu.Q<VisualElement>("SettingsNav");
+        _mainMenuOptions = _menu.Q<VisualElement>("MainNav").Children().ToArray();
+        //_settingsMenuOptions = _menu.Q<VisualElement>("SettingsNav");
+        _widgets = root.Q<VisualElement>("Body").Children().ToList();
 
         //var settingsButton = _mainMenuOptions.Cast<Label>().FirstOrDefault(x => x.text.ToUpper().Equals("SETTINGS"));
         //var cancelButton = _settingsMenuOptions.Children().Last();
@@ -42,11 +45,19 @@ public class UserInterfaceController : MonoBehaviour
 
     private void Menu_TransitionEnd(TransitionEndEvent evt)
     {
-        if (!evt.stylePropertyNames.Contains("opacity") || _mainPopupIndex == _mainMenuOptions.Count - 1) { return; }
+        if (!evt.stylePropertyNames.Contains("opacity")) { return; }
 
-        _mainPopupIndex++;
+        //Main menu is done
+        if (_mainPopupIndex == _mainMenuOptions.Length - 1)
+        {
+            _widgets.ForEach(x => x.style.translate = new StyleTranslate(new Translate(0, 0, 0)));
+        }
+        else
+        {
+            _mainPopupIndex++;
 
-        _mainMenuOptions[_mainPopupIndex].ToggleInClassList(POPUP_ANIMATION);
+            _mainMenuOptions[_mainPopupIndex].ToggleInClassList(POPUP_ANIMATION);
+        }
 
     }
 

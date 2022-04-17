@@ -63,15 +63,14 @@
 #Option {
     transition-duration: 0.25s;
     transition-timing-function: ease-out-back;
-    transition-property: opacity;
 }
 
 #Option:hover {
     color: white;
 }
 
-.pop-animation-show {
-    opacity: 100;
+.pop-animation-hide {
+    opacity: 0;
 }
 
 #DecorativeBar {
@@ -88,7 +87,7 @@
     width: 100%;
     font-size: var(--font-size-h2);
     -unity-font-style: bold;
-    color: rgba(255, 255, 255, 255);
+    color: rgb(255, 255, 255);
     -unity-text-align: upper-right;
 }
 
@@ -103,15 +102,19 @@
 #WidgetContainer {
     width: 300px;
     height: 200px;
-    border-color: rgba(0, 0, 0, 255);
+    border-color: rgb(0, 0, 0);
     margin: 20px;
+    translate: 0 254px;
+    transition-duration: 0.75s;
+    transition-delay: 0.75s;
+    transition-timing-function: ease-out-back;
 }
 
 #Image {
     border-width: 2px;
     height: 90%;
     border-color: var(--color-1);
-    background-color: rgba(66, 66, 66, 255);
+    background-color: rgb(66, 66, 66);
 }
 
 #NavContainer {
