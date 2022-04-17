@@ -58,6 +58,8 @@
 
 #Content {
     align-items: stretch;
+    flex-grow: 1;
+    margin: 10px;
 }
 
 #Content #Header {
@@ -98,6 +100,8 @@
     height: 10%;
     flex-direction: row;
     margin: 5px;
+    align-items: center;
+    justify-content: center;
 }
 
 #Selector {

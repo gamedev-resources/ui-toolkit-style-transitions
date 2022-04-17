@@ -37,17 +37,17 @@ public class UserInterfaceController : MonoBehaviour
         if (!evt.stylePropertyNames.Contains("opacity")) { return; }
 
 
-    if (_mainPopupIndex < _mainMenuOptions.Length - 1)
-    {
-        _mainPopupIndex++;
+        if (_mainPopupIndex < _mainMenuOptions.Length - 1)
+        {
+            _mainPopupIndex++;
 
-        _mainMenuOptions[_mainPopupIndex].ToggleInClassList(POPUP_ANIMATION);
-    }
-    else
-    {
-        _widgets.ForEach(x => x.style.translate = new StyleTranslate(new Translate(0, 0, 0)));
+            _mainMenuOptions[_mainPopupIndex].ToggleInClassList(POPUP_ANIMATION);
+        }
+        else
+        {
+            _widgets.ForEach(x => x.style.translate = new StyleTranslate(new Translate(0, 0, 0)));
 
-    }
+        }
 
     }
 }
