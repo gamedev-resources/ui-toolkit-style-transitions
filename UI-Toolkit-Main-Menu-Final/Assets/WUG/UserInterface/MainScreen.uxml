@@ -10,14 +10,6 @@
                     <ui:Label text="SETTINGS" display-tooltip-when-elided="true" name="Option" class="pop-animation-hide" />
                     <ui:Label text="QUIT" display-tooltip-when-elided="true" name="Option" class="pop-animation-hide" />
                 </ui:VisualElement>
-                <ui:VisualElement name="SettingsNav">
-                    <ui:Label text="SETTINGS" display-tooltip-when-elided="true" name="Header" style="-unity-font-style: normal;" />
-                    <ui:Label text="AUDIO" display-tooltip-when-elided="true" name="Option" />
-                    <ui:Label text="GAMEPLAY" display-tooltip-when-elided="true" name="Option" />
-                    <ui:Label text="DISPLAY" display-tooltip-when-elided="true" name="Option" />
-                    <ui:Label text="SAVE" display-tooltip-when-elided="true" name="Option" />
-                    <ui:Label text="CANCEL" display-tooltip-when-elided="true" name="Option" />
-                </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement name="DecorativeBar" />
         </ui:VisualElement>

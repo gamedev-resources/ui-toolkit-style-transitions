@@ -4,8 +4,8 @@
     --font-size-h1: 35px;
     --font-size-h2: 30px;
     --font-size-h3: 25px;
-    --background-img: url('project://database/Assets/WUG/Sprites/Background.jpeg?fileID=2800000&guid=8a25f4c0fbab34b4082589c3e69dff69&type=3#Background');
-    -unity-font-definition: url('project://database/Assets/WUG/Fonts/Syncopate-Regular%20SDF.asset?fileID=11400000&guid=570705000cfefab43b186a21c71908cf&type=2#Syncopate-Regular SDF');
+    --background-img: url('project://database/Assets/WUG/Sprites/Background.jpeg');
+    -unity-font-definition: url('project://database/Assets/WUG/Fonts/Syncopate-Regular%20SDF.asset');
     color: var(--color-2);
 }
 
@@ -36,30 +36,6 @@
     -unity-text-align: upper-center;
 }
 
-#Navigation #SettingsNav {
-    font-size: var(--font-size-h3);
-    align-items: center;
-    display: none;
-    width: 100%;
-    -unity-text-align: upper-center;
-}
-
-#MainNav #Option:hover {
-    font-size: var(--font-size-h1);
-}
-
-#SettingsNav #Option:hover {
-    font-size: var(--font-size-h2);
-}
-
-#SettingsNav #Header {
-    font-size: var(--font-size-h1);
-    border-bottom-width: 1.5px;
-    border-color: var(--color-2);
-    margin-bottom: 10px;
-    width: 65%;
-}
-
 #Option {
     transition-duration: 0.25s;
     transition-timing-function: ease-out-back;
@@ -67,6 +43,7 @@
 
 #Option:hover {
     color: white;
+    font-size: var(--font-size-h1);
 }
 
 .pop-animation-hide {
