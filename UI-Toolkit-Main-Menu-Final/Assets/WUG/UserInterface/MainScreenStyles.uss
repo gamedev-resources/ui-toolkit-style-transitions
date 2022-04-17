@@ -5,7 +5,6 @@
     --font-size-h2: 30px;
     --font-size-h3: 25px;
     --background-img: url('project://database/Assets/WUG/Sprites/Background.jpeg?fileID=2800000&guid=8a25f4c0fbab34b4082589c3e69dff69&type=3#Background');
-    
     -unity-font-definition: url('project://database/Assets/WUG/Fonts/Syncopate-Regular%20SDF.asset?fileID=11400000&guid=570705000cfefab43b186a21c71908cf&type=2#Syncopate-Regular SDF');
     color: var(--color-2);
 }
@@ -23,7 +22,6 @@
     transition-duration: 0.75s;
     transition-timing-function: ease-out-back;
 }
-
 
 #Menu > VisualElement {
     background-color: var(--color-1);
@@ -72,12 +70,65 @@
     color: white;
 }
 
-.pop-animation-hide {
-    opacity: 0;
+.pop-animation-show {
+    opacity: 100;
 }
 
 #DecorativeBar {
     width: 5px;
     margin-left: 5px;
     margin-right: 5px;
+}
+
+#Content {
+    align-items: stretch;
+}
+
+#Content #Header {
+    width: 100%;
+    font-size: var(--font-size-h2);
+    -unity-font-style: bold;
+    color: rgba(255, 255, 255, 255);
+    -unity-text-align: upper-right;
+}
+
+#Body {
+    flex-grow: 1;
+    justify-content: center;
+    flex-direction: row;
+    width: 100%;
+    align-items: flex-end;
+}
+
+#WidgetContainer {
+    width: 300px;
+    height: 200px;
+    border-color: rgba(0, 0, 0, 255);
+    margin: 20px;
+}
+
+#Image {
+    border-width: 2px;
+    height: 90%;
+    border-color: var(--color-1);
+    background-color: rgba(66, 66, 66, 255);
+}
+
+#NavContainer {
+    height: 10%;
+    flex-direction: row;
+    margin: 5px;
+}
+
+#Selector {
+    border-width: 2px;
+    border-color: var(--color-1);
+    width: 20px;
+    height: 20px;
+    border-radius: 50px;
+    margin: 5px;
+}
+
+.selector-filled {
+    background-color: var(--color-1);
 }

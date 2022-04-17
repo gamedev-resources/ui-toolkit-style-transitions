@@ -21,6 +21,26 @@
             </ui:VisualElement>
             <ui:VisualElement name="DecorativeBar" />
         </ui:VisualElement>
-        <ui:VisualElement name="Content" style="flex-grow: 1;" />
+        <ui:VisualElement name="Content" style="flex-grow: 1; align-items: flex-end; justify-content: center;">
+            <ui:Label text="GAME&#10;LOGO HERE" display-tooltip-when-elided="true" name="Header" />
+            <ui:VisualElement name="Body">
+                <ui:VisualElement name="WidgetContainer">
+                    <ui:VisualElement name="Image" />
+                    <ui:VisualElement name="NavContainer" style="align-items: center; justify-content: center;">
+                        <ui:VisualElement name="Selector" class="selector-filled" />
+                        <ui:VisualElement name="Selector" />
+                        <ui:VisualElement name="Selector" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="WidgetContainer">
+                    <ui:VisualElement name="Image" />
+                    <ui:VisualElement name="NavContainer" style="align-items: center; justify-content: center;">
+                        <ui:VisualElement name="Selector" class="selector-filled" />
+                        <ui:VisualElement name="Selector" />
+                        <ui:VisualElement name="Selector" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
