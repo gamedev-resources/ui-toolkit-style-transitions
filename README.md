@@ -1,4 +1,4 @@
-> ## Follow the tutorial on [GameDev Resources](https://gamedev-resources.com/use-style-transitions-to-animate-a-menu).
+> View the entire tutorial on [What Up Games](https://www.whatupgames.com).
 
 # Use style transitions to animate a menu with UI Toolkit
 Including animations in your user interface can take it to the next level and really make it pop. This tutorial teaches you how to use style transitions to animate your UI. It includes very minimal C# code to help stagger the animations, rather than having them all run at once. By the end, you will have the first screen in the Design an interactive game UI with Figma created and animated in Unity via UI Toolkit.
